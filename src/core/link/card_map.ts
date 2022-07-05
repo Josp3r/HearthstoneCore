@@ -2,7 +2,7 @@ import cards from '../cards'
 import { Card, CardMap } from '../types'
 
 const cardMap: CardMap = {
-    series: {},
+    Set: {},
     type: {},
     class: {},
 }
@@ -18,7 +18,7 @@ const _add2List = (object: Record<string, Card[]>, key: string, card: Card) => {
 export const linkCardMap = () => {
     cards.forEach((card: Card) => {
         _add2List(cardMap.type, String(card.Type), card)
-        _add2List(cardMap.series, String(card.Series), card)
+        _add2List(cardMap.Set, String(card.Set), card)
         _add2List(cardMap.class, String(card.Class), card)
     })
 }

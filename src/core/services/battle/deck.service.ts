@@ -1,13 +1,15 @@
-import { injectable } from 'inversify'
-import { Card } from '../../card' 
+import { injectable, inject } from 'inversify'
+import { PlayerSymbol, PlayerService } from './player.service'
+// import { Card } from '../../card' 
 
 @injectable()
 export class DeckService {
     constructor(
+        @inject(PlayerSymbol) private PlayerService: PlayerService,
     ) {}
 
-    Load(Cards: Card[]) {
-        
+    Load() {
+
     }
 
     Draw(n: number) {

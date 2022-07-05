@@ -1,7 +1,7 @@
-import { Card as ICard, CardSeries, CardType, ClassKind, Rarity, MinionCard as IMinionCard, Effect, SpellCard as ISpellCard, SpellSchool, MinionType } from '../types'
+import { Card as ICard, CardSet, CardType, ClassKind, Rarity, MinionCard as IMinionCard, Effect, SpellCard as ISpellCard, SpellSchool, MinionType } from '../types'
 export class Card implements ICard {
     ID: string
-    Series: CardSeries
+    Set: CardSet
     Class: ClassKind
     Type: CardType
     Rarity: Rarity
@@ -12,7 +12,7 @@ export class Card implements ICard {
 
     constructor(CardConfig: ICard) {
         this.ID = CardConfig.ID
-        this.Series = CardConfig.Series
+        this.Set = CardConfig.Set
         this.Class = CardConfig.Class
         this.Type = CardConfig.Type
         this.Rarity = CardConfig.Rarity
@@ -22,7 +22,7 @@ export class Card implements ICard {
         this.Cost = CardConfig.Cost
     }
 
-    static CardSeries = CardSeries
+    static CardSet = CardSet
     static CardClass = ClassKind
     static CardType = CardType
     static CardRarity = Rarity

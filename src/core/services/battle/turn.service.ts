@@ -1,6 +1,7 @@
-import { injectable } from 'inversify'
+import { injectable, inject } from 'inversify'
+import { PlayerSymbol, PlayerService } from './player.service'
 
-enum CurrentOf {
+enum ThisTurnOwner {
     Initial,
     PlayerA,
     PlayerB,
@@ -8,20 +9,27 @@ enum CurrentOf {
 
 @injectable()
 export class TurnService {
-    private CurrentOf: CurrentOf = CurrentOf.Initial
+    private ThisTurnOwner: ThisTurnOwner = ThisTurnOwner.Initial
     constructor(
+        @inject(PlayerSymbol) private PlayerService: PlayerService,
     ) {}
 
     // 猜先（掷硬币）
     Toss() {
-        this.CurrentOf = Math.random() > 0.5 ? CurrentOf.PlayerA : CurrentOf.PlayerB
+        this.ThisTurnOwner = Math.random() > 0.5 ? ThisTurnOwner.PlayerA : ThisTurnOwner.PlayerB
     }
 
     // 切换回合
     ChangeTurn() {
-        if (this.CurrentOf === CurrentOf.PlayerA) {
-            this.CurrentOf = CurrentOf.PlayerB
+        if (this.ThisTurnOwner === ThisTurnOwner.PlayerA) {
+            this.ThisTurnOwner = ThisTurnOwner.PlayerB
+        } else {
+            this.ThisTurnOwner = ThisTurnOwner.PlayerA
         }
+    }
+
+    GetThisTurnPlayer() {
+        return this.ThisTurnOwner
     }
 }
 

@@ -1,35 +1,15 @@
-import { BattlePlayer as IBattlePlayer, CardType, EffectType, HandCard as IHandCard, HandCardStatus, Hero, Weapon } from '../types'
+import { BattlePlayer as IBattlePlayer, CardType, EffectType, HandCard as IHandCard, HandCardStatus, Weapon } from '../interfaces'
 import { Card, SpellCard, MinionCard } from '../card'
 import { Effect, ManaCrystalEffect } from '../effect'
+import { HandCard } from './hand_card'
+import { Hero, DEFAULT_HERO } from './hero'
 import Minion from '../minion'
 import PDefer from 'p-defer'
 
-class HandCard implements IHandCard {
-    Status: HandCardStatus = HandCardStatus.Normal
-    Card: Card
-    Change = {
-        Cost: undefined,
-        Attack: undefined,
-        Health: undefined,
-    }
-
-    constructor(Card: Card) {
-        this.Card = Card
-    }
-
-    GetCost() {
-        return this.Change.Cost || this.Card.Cost
-    }
-
-    Usable(LeftManaCrystal: number) {
-        return LeftManaCrystal >= this.GetCost()
-    }
-}
-
 const MAX_HAND = 10
-const Max_MINION = 7
+const MAX_MINION = 7
 
-class Player implements IBattlePlayer {
+export class BattlePlayer implements IBattlePlayer {
     Hero: Hero
     Deck: Card[]
     Hand: HandCard[] = []
@@ -189,4 +169,4 @@ class Player implements IBattlePlayer {
 
 }
 
-export default Player
+export const DEFAULT_BATTLE_PLAYER = new BattlePlayer(DEFAULT_HERO, [])

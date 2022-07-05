@@ -1,9 +1,9 @@
-import { MinionCard, CardType, ClassKind, Rarity, CardSeries } from '../../../types'
+import { MinionCard, CardType, ClassKind, Rarity, CardSet } from '../../../types'
 
 const cards: Card[] = [
     {
         ID: 'basic_neutral_minion_1',
-        Series: CardSeries.Basic,
+        Set: CardSet.Basic,
         Type: CardType.Minion,
         Class: ClassKind.Neutral,
         Rarity: Rarity.Common,
