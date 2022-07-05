@@ -9,7 +9,9 @@
   },
   "dependencies": {
     "@vueuse/core": "^8.7.5",
+    "inversify": "^6.0.1",
     "p-defer": "^4.0.0",
+    "reflect-metadata": "^0.1.13",
     "vue": "^3.2.25",
     "vue-router": "4"
   },
